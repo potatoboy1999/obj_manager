@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = "users";
+    public $timestamps = true;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'position_id',
+        'status',
     ];
 
     /**
@@ -41,4 +46,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function position(){
+        return $this->belongsTo(Position::class,'position_id','id');
+    }
+
+    public function travel_schedules(){
+        return $this->hasMany(TravelSchedule::class,'users_id','id');
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class,'users_id','id');
+    }
+
+    public function activities(){
+        return $this->belongsToMany(Activity::class,'comments','users_id','activities_id');
+    }
+
+    public function reunions(){
+        return $this->belongsToMany(Reunion::class,'reunion_presenters','user_id','reunion_id');
+    }
 }
