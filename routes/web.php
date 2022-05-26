@@ -18,7 +18,7 @@ Route::get('/', function () {return redirect('/login');});
 
 Route::group(["middleware"=>["auth"]], function(){
     Route::get('dashboard',function(){
-        return view('dashboard');
+        return view('dashboard.index');
     })->name('dashboard');
 });
 
