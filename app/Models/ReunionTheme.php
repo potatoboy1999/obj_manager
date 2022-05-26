@@ -9,16 +9,20 @@ class ReunionTheme extends Model
 {
     use HasFactory;
 
-    protected $table = "reunion_themes";
+    protected $table = "T_SGCV_Reu_Temas";
     public $timestamps = true;
 
     protected $fillable = [
-        'title',
+        'titulo',
         'reunion_id',
-        'status',
+        'estado',
     ];
 
     public function reunion(){
         return $this->belongsTo(Reunion::class,"reunion_id","id");
+    }
+
+    public function documents(){
+        return $this->belongsToMany(Document::class,"T_SGCV_Reu_document","reu_tema_id","documento_id");
     }
 }

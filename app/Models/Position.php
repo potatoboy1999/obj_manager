@@ -9,13 +9,13 @@ class Position extends Model
 {
     use HasFactory;
 
-    protected $table = "positions";
+    protected $table = "T_SGCV_Posiciones";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
+        'nombre',
         'area_id',
-        'status',
+        'estado',
     ];
 
     public function area(){

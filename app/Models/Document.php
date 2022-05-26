@@ -9,19 +9,19 @@ class Document extends Model
 {
     use HasFactory;
 
-    protected $table = "documents";
+    protected $table = "T_SGCV_Documentos";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'status',
+        'nombre',
+        'estado',
     ];
 
     public function activities(){
-        return $this->hasMany(Activity::class,"document_id","id");
+        return $this->hasMany(Activity::class,"documento_id","id");
     }
 
     public function reu_documents(){
-        return $this->hasMany(ReunionDocument::class,"documents_id","id");
+        return $this->hasMany(ReunionDocument::class,"documento_id","id");
     }
 }

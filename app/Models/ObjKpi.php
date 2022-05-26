@@ -9,17 +9,17 @@ class ObjKpi extends Model
 {
     use HasFactory;
 
-    protected $table = "obj_kpi";
+    protected $table = "T_SGCV_Obj_kpi";
     public $timestamps = true;
 
     protected $fillable = [
         'kpi_id',
-        'objective_id',
-        'status'
+        'objectivo_id',
+        'estado'
     ];
 
     public function objective(){
-        return $this->belongsTo(Objective::class,'objective_id','id');
+        return $this->belongsTo(Objective::class,'objectivo_id','id');
     }
     
     public function kpi(){

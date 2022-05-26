@@ -9,17 +9,17 @@ class ReunionPresenter extends Model
 {
     use HasFactory;
 
-    protected $table = "reunion_presenters";
+    protected $table = "T_SGCV_Reu_presentadores";
     public $timestamps = true;
 
     protected $fillable = [
-        'user_id',
+        'usuario_id',
         'reunion_id',
-        'status',
+        'estado',
     ];
 
     public function user(){
-        return $this->belongsTo(Users::class,"user_id","id");
+        return $this->belongsTo(Users::class,"usuario_id","id");
     }
 
     public function reunion(){

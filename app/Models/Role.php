@@ -9,16 +9,16 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $table = "roles";
+    protected $table = "T_SGCV_Roles";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'description',
-        'status'
+        'nombre',
+        'descripcion',
+        'estado'
     ];
 
     public function themes(){
-        return $this->hasMany(Theme::class,"roles_id","id");
+        return $this->hasMany(Theme::class,"rol_id","id");
     }
 }

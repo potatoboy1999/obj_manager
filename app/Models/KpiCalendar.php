@@ -9,16 +9,16 @@ class KpiCalendar extends Model
 {
     use HasFactory;
 
-    protected $table = "kpi_calendar";
+    protected $table = "T_SGCV_Kpi_Calendario";
     public $timestamps = true;
 
     protected $fillable = [
         'kpi_id',
-        'month',
-        'year',
-        'value',
-        'type',
-        'status',
+        'mes',
+        'anio',
+        'valor',
+        'tipo',
+        'estado',
     ];
 
     public function kpi(){

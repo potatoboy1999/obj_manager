@@ -54,7 +54,7 @@
     </head>
     <body>
 
-        @yield('body')
+        @yield('content')
 
         <!-- CoreUI and necessary plugins-->
         <script src="node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>

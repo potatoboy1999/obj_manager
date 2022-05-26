@@ -9,21 +9,21 @@ class TravelActivity extends Model
 {
     use HasFactory;
 
-    protected $table = "travel_activities";
+    protected $table = "T_SGCV_Actividades_Viajes";
     public $timestamps = true;
 
     protected $fillable = [
-        'description',
-        'type',
-        'travel_schedule_id',
-        'status',
+        'descripcion',
+        'tipo',
+        'agenda_viaje_id',
+        'estado',
     ];
 
     public function travel_schedule(){
-        return $this->belongsTo(TravelSchedule::class,"travel_schedule_id","id");
+        return $this->belongsTo(TravelSchedule::class,"agenda_viaje_id","id");
     }
 
     public function report_activities(){
-        return $this->hasMany(ReportActivity::class,"report_activities_id","id");
+        return $this->hasMany(ReportActivity::class,"actividades_viaje_id","id");
     }
 }

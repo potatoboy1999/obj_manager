@@ -9,20 +9,20 @@ class Theme extends Model
 {
     use HasFactory;
 
-    protected $table = "themes";
+    protected $table = "T_SGCV_Temas";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'status',
-        'roles_id',
+        'rol_id',
+        'nombre',
+        'estado',
     ];
 
     public function role(){
-        return $this->belongsTo(Role::class,'roles_id','id');
+        return $this->belongsTo(Role::class,'rol_id','id');
     }
 
     public function objectives(){
-        return $this->hasMany(Objective::class,'themes_id','id');
+        return $this->hasMany(Objective::class,'tema_id','id');
     }
 }

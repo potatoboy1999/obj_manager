@@ -9,28 +9,28 @@ class Activity extends Model
 {
     use HasFactory;
 
-    protected $table = "activities";
+    protected $table = "T_SGCV_Actividades";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'objective_id',
-        'date_start',
-        'date_end',
-        'proced_politics',
-        'document_id',
-        'status',
+        'nombre',
+        'objetivo_id',
+        'fecha_comienzo',
+        'fecha_fin',
+        'preced_politicas',
+        'documento_id',
+        'estado',
     ];
 
-    public function objective(){
-        return $this->belongsTo(Objective::class, "objective_id", "id");
-    }
-
     public function comments(){
-        return $this->hasMany(Comment::class, "activities_id", "id");
+        return $this->hasMany(Comment::class, "actividad_id", "id");
+    }
+    
+    public function objective(){
+        return $this->belongsTo(Objective::class, "objetivo_id", "id");
     }
 
     public function document(){
-        return $this->belongsTo(Document::class, "document_id", "id");
+        return $this->belongsTo(Document::class, "documento_id", "id");
     }
 }

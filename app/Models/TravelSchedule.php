@@ -9,28 +9,28 @@ class TravelSchedule extends Model
 {
     use HasFactory;
 
-    protected $table = "travel_schedule";
+    protected $table = "T_SGCV_Agenda_Viajes";
     public $timestamps = true;
 
     protected $fillable = [
-        'users_id',
-        'branch_id',
-        'travel_start',
-        'travel_end',
-        'status',
-        'vehicle',
-        'hotel',
-        'travel_pay',
-        'validation_one',
-        'validation_two',
+        'usuario_id',
+        'sede_id',
+        'viaje_comienzo',
+        'viaje_fin',
+        'vehiculo',
+        'hospedaje',
+        'viaticos',
+        'estado',
+        'validacion_uno',
+        'validacion_dos',
     ];
 
     public function user(){
-        return $this->belongsTo(User::class,"users_id","id");
+        return $this->belongsTo(User::class,"usuario_id","id");
     }
 
     public function branch(){
-        return $this->belongsTo(Branch::class,"branch_id","id");
+        return $this->belongsTo(Branch::class,"sede_id","id");
     }
 
 }

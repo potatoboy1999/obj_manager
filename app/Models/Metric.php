@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Metric extends Model
 {
     use HasFactory;
-    protected $table = "metrics";
+    protected $table = "T_SGCV_Metricas";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'symbol',
-        'status',
+        'nombre',
+        'simbolo',
+        'estado',
     ];
 
     public function kpis(){

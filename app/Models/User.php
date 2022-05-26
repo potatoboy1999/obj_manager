@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = "users";
+    protected $table = "T_SGCV_Usuarios";
     public $timestamps = true;
 
     /**
@@ -21,11 +21,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nombre',
         'email',
         'password',
-        'position_id',
-        'status',
+        'posicion_id',
+        'estado',
     ];
 
     /**
@@ -48,15 +48,27 @@ class User extends Authenticatable
     ];
 
     public function position(){
-        return $this->belongsTo(Position::class,'position_id','id');
+        return $this->belongsTo(Position::class,'posicion_id','id');
     }
 
     public function travel_schedules(){
-        return $this->hasMany(TravelSchedule::class,'users_id','id');
+        return $this->hasMany(TravelSchedule::class,'usuario_id','id');
     }
 
     public function comments(){
-        return $this->hasMany(Comment::class,'users_id','id');
+        return $this->hasMany(Comment::class,'usuario_id','id');
+    }
+
+    public function mailsAsSender(){
+        return $this->hasMany(MailSent::class,"usr_remitente","id");
+    }
+
+    public function mailsAsReceiver(){
+        return $this->hasMany(MailSent::class,"usr_receptor","id");
+    }
+
+    public function profiles(){
+        return $this->belongsToMany(Profile::class,"T_SGCV_Usuario_Perfil","usuario_id","perfil_id");
     }
 
     public function activities(){

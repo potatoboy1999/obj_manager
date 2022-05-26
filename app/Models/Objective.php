@@ -9,25 +9,25 @@ class Objective extends Model
 {
     use HasFactory;
 
-    protected $table = "objectives";
+    protected $table = "T_SGCV_Objetivos";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'theme',
-        'date_start',
-        'date_end',
-        'status',
-        'comments',
+        'nombre',
+        'tema_id',
+        'fecha_comienzo',
+        'fecha_fin',
+        'estado',
+        'comentarios',
     ];
 
     public function theme(){
-        return $this->belongsTo(Theme::class, "themes_id","id");
+        return $this->belongsTo(Theme::class, "tema_id","id");
     }
     public function kpis(){
-        return $this->belongsToMany(Kpi::class,"obj_kpi","objective_id","kpi_id");
+        return $this->belongsToMany(Kpi::class,"T_SGCV_Obj_kpi","objectivo_id","kpi_id");
     }
     public function activities(){
-        return $this->hasMany(Activity::class,'objective_id','id');
+        return $this->hasMany(Activity::class,'objectivo_id','id');
     }
 }

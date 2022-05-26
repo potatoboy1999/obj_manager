@@ -9,12 +9,12 @@ class Area extends Model
 {
     use HasFactory;
 
-    protected $table = "areas";
+    protected $table = "T_SGCV_Areas";
     public $timestamps = true;
 
     protected $fillable = [
-        'name',
-        'status',
+        'nombre',
+        'estado',
     ];
 
     public function positions(){
@@ -22,6 +22,6 @@ class Area extends Model
     }
 
     public function reu_documents(){
-        return $this->belongsToMany(Document::class,'reunion_documents','area_id','documents_id');
+        return $this->belongsToMany(Document::class,'T_SGCV_Reu_document','area_id','documento_id');
     }
 }

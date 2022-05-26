@@ -9,22 +9,18 @@ class Reunion extends Model
 {
     use HasFactory;
     
-    protected $table = "reunions";
+    protected $table = "T_SGCV_Reuniones";
     public $timestamps = true;
 
     protected $fillable = [
-        'title',
-        'description',
-        'date',
-        'status',
+        'titulo',
+        'descripcion',
+        'fecha',
+        'estado',
     ];
 
     public function reunionThemes(){
         return $this->hasMany(ReunionTheme::class,"reunion_id","id");
-    }
-
-    public function reunionDocuments(){
-        return $this->hasMany(ReunionDocument::class,"reunion");
     }
 
     public function reunionPresenters(){
@@ -32,10 +28,10 @@ class Reunion extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(User::class,"reunion_presenters","reunion_id","user_id");
+        return $this->belongsToMany(User::class,"T_SGCV_Reu_presentadores","reunion_id","usuario_id");
     }
 
     public function documents(){
-        return $this->belongsToMany(Documents::class,"reunion_document","reunion_id","documents_id");
+        return $this->belongsToMany(Documents::class,"T_SGCV_Reu_document","reunion_id","documento_id");
     }
 }

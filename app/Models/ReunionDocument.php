@@ -9,25 +9,25 @@ class ReunionDocument extends Model
 {
     use HasFactory;
 
-    protected $table = "reunion_document";
+    protected $table = "T_SGCV_Reu_document";
     public $timestamps = true;
 
     protected $fillable = [
         'area_id',
-        'reunion_id',
-        'documents_id',
-        'status',
+        'reu_temas_id',
+        'documento_id',
+        'estado',
     ];
 
     public function area(){
         return $this->belongsTo(User::class,"area_id","id");
     }
 
-    public function reunion(){
-        return $this->belongsTo(Reunion::class,"reunion_id","id");
+    public function theme(){
+        return $this->belongsTo(Theme::class,"reu_tema_id","id");
     }
 
     public function document(){
-        return $this->belongsTo(Document::class,"documents_id","id");
+        return $this->belongsTo(Document::class,"documento_id","id");
     }
 }
