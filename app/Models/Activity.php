@@ -17,8 +17,8 @@ class Activity extends Model
         'objetivo_id',
         'fecha_comienzo',
         'fecha_fin',
-        'preced_politicas',
-        'documento_id',
+        'doc_politicas_id',
+        'doc_adjunto_id',
         'estado',
     ];
 
@@ -30,7 +30,11 @@ class Activity extends Model
         return $this->belongsTo(Objective::class, "objetivo_id", "id");
     }
 
-    public function document(){
-        return $this->belongsTo(Document::class, "documento_id", "id");
+    public function docAdjacent(){
+        return $this->belongsTo(Document::class, "doc_adjunto_id", "id");
+    }
+
+    public function docPoliticas(){
+        return $this->belongsTo(Document::class, "doc_politicas_id", "id");
     }
 }

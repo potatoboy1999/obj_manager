@@ -13,7 +13,8 @@ class ObjectiveController extends Controller
      */
     public function index()
     {
-        //
+        $page = "objectives";
+        return view("objectives.index",["page"=>$page]);
     }
 
     /**

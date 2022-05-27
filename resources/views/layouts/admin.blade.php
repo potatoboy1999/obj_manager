@@ -58,80 +58,26 @@
                 </svg>
             </div>
             <ul class="sidebar-nav" data-coreui="navigation" data-simplebar>
-                <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-speedometer"></use>
-                    </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
-                <li class="nav-title">Theme</li>
-                <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-drop"></use>
-                    </svg> Colors</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-pencil"></use>
-                    </svg> Typography</a></li>
-                <li class="nav-title">Components</li>
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-puzzle"></use>
-                    </svg> Base</a>
-                    <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Accordion</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Breadcrumb</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Cards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Carousel</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Collapse</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> List group</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Navs &amp; Tabs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Pagination</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Placeholders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Popovers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Progress</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Scrollspy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Spinners</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Tables</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Tooltips</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link {{((isset($page) && $page == "dashboard") ? "active":"")}}" href="#">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-speedometer"></use>
+                        </svg> Dashboard
+                    </a>
                 </li>
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-cursor"></use>
-                    </svg> Buttons</a>
-                    <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Buttons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Buttons Group</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Dropdowns</a></li>
-                    </ul>
+                <li class="nav-title">Agenda de Gestión</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("objectives")}}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-drop"></use>
+                        </svg> Objetivos
+                    </a>
                 </li>
+                <li class="nav-title">Agenda de Viajes</li>
                 <li class="nav-item"><a class="nav-link" href="#">
                     <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-chart-pie"></use>
-                    </svg> Charts</a></li>
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
-                    </svg> Forms</a>
-                    <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="#"> Form Control</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Select</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Checks and radios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Range</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Input group</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Floating labels</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Layout</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> Validation</a></li>
-                    </ul>
-                </li>
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-star"></use>
-                    </svg> Icons</a>
-                    <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="#"> CoreUI Icons<span class="badge badge-sm bg-success ms-auto">Free</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> CoreUI Icons - Brand</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"> CoreUI Icons - Flag</a></li>
-                    </ul>
+                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calendar"></use>
+                    </svg> Calendario</a>
                 </li>
                 <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
                     <svg class="nav-icon">
@@ -144,34 +90,12 @@
                     <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Toasts</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calculator"></use>
-                    </svg> Widgets<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
                 <li class="nav-divider"></li>
-                <li class="nav-title">Extras</li>
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
+                <li class="nav-title">Agenda de Reuniones</li>
+                <li class="nav-group"><a class="nav-link" href="#">
                     <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-star"></use>
-                    </svg> Pages</a>
-                    <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="#" target="_top">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-account-logout"></use>
-                        </svg> Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" target="_top">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-account-logout"></use>
-                        </svg> Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" target="_top">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-bug"></use>
-                        </svg> Error 404</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" target="_top">
-                        <svg class="nav-icon">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-bug"></use>
-                        </svg> Error 500</a></li>
-                    </ul>
+                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-briefcase"></use>
+                    </svg> Reuniones</a>
                 </li>
                 <!--<li class="nav-item mt-auto"><a class="nav-link" href="#">
                     <svg class="nav-icon">
@@ -198,24 +122,28 @@
                     <svg width="118" height="46" alt="CoreUI Logo">
                         <use xlink:href="{{asset("icons/coreui.svg#full")}}"></use>
                     </svg></a>
-                    <ul class="header-nav d-none d-md-flex">
-                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
-                    </ul>
                     <ul class="header-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <svg class="icon icon-lg">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-bell"></use>
-                        </svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <svg class="icon icon-lg">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-list-rich"></use>
-                        </svg></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">
-                        <svg class="icon icon-lg">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-envelope-open"></use>
-                        </svg></a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg class="icon icon-lg">
+                                    <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-bell"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg class="icon icon-lg">
+                                    <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-list-rich"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg class="icon icon-lg">
+                                    <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-envelope-open"></use>
+                                </svg>
+                            </a>
+                        </li>
                     </ul>
                     <ul class="header-nav ms-3">
                     <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
