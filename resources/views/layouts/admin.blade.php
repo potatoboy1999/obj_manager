@@ -65,49 +65,42 @@
                         </svg> Dashboard
                     </a>
                 </li>
-                <li class="nav-title">Agenda de Gestión</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route("objectives")}}">
+                @foreach (Auth::user()->profiles as $profile)
+                    @foreach ($profile->options
+                                ->whereNull("opcion_padre_id")
+                                ->where("tipo_opcion",1)
+                                ->where("estado",1)
+                                ->sortBy("num_nivel") as $parentOption)
+                        <li class="nav-title">{{$parentOption->opcion}}</li>
+
+                        @foreach ($profile->options
+                                    ->where("opcion_padre_id",$parentOption->id)
+                                    ->where("estado",1)
+                                    ->sortBy("num_orden") as $option)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{($option->url != null)?route($option->url):""}}">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#{{$option->url_img}}"></use>
+                                    </svg> {{$option->opcion}}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endforeach
+                @endforeach
+                <li class="nav-title">Otros</li>
+                <li class="nav-group">
+                    <a class="nav-link nav-group-toggle" href="#">
                         <svg class="nav-icon">
-                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-drop"></use>
-                        </svg> Objetivos
+                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-bell"></use>
+                        </svg> Notifications
                     </a>
-                </li>
-                <li class="nav-title">Agenda de Viajes</li>
-                <li class="nav-item"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calendar"></use>
-                    </svg> Calendario</a>
-                </li>
-                <li class="nav-group"><a class="nav-link nav-group-toggle" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-bell"></use>
-                    </svg> Notifications</a>
                     <ul class="nav-group-items">
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Alerts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Badge</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Modals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Toasts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Alerts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Badge</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Modals</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><span class="nav-icon"></span> Toasts</a></li>
                     </ul>
                 </li>
-                <li class="nav-divider"></li>
-                <li class="nav-title">Agenda de Reuniones</li>
-                <li class="nav-group"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-briefcase"></use>
-                    </svg> Reuniones</a>
-                </li>
-                <!--<li class="nav-item mt-auto"><a class="nav-link" href="#">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-description"></use>
-                    </svg> Docs</a>
-                </li>
-                <li class="nav-item"><a class="nav-link nav-link-danger" href="https://coreui.io/pro/" target="_top">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-layers"></use>
-                    </svg> Try CoreUI
-                    <div class="fw-semibold">PRO</div></a>
-                </li>-->
             </ul>
             <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
         </div>
@@ -213,10 +206,15 @@
                 <div class="container-fluid">
                     <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
-                        <li class="breadcrumb-item">
-                        <!-- if breadcrumb is single--><span>Home</span>
-                        </li>
-                        <li class="breadcrumb-item active"><span>Dashboard</span></li>
+                        @for ($i = 0; $i < sizeOf($bcrums); $i++)
+                            <li class="breadcrumb-item {{(($i+1) == sizeOf($bcrums))?"active":""}}">
+                                @if (($i+1) < sizeOf($bcrums))
+                                    <a href="#">{{$bcrums[$i]}}</a>
+                                @else
+                                    <span>{{$bcrums[$i]}}</span>
+                                @endif
+                            </li>
+                        @endfor
                     </ol>
                     </nav>
                 </div>

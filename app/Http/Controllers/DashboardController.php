@@ -8,6 +8,10 @@ class DashboardController extends Controller
 {
     public function index(){
         $page = "dashboard";
-        return view('dashboard.index',["page"=> $page]);
+        $bcrums = ["Dashboard"];
+        return view('dashboard.index',[
+            "page"=> $page,
+            "bcrums"=>$bcrums
+        ]);
     }
 }

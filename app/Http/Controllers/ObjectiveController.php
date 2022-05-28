@@ -14,7 +14,11 @@ class ObjectiveController extends Controller
     public function index()
     {
         $page = "objectives";
-        return view("objectives.index",["page"=>$page]);
+        $bcrums = ["Agenda Estrategica","Objetivos"];
+        return view("objectives.index",[
+            "page"=>$page,
+            "bcrums" => $bcrums,
+        ]);
     }
 
     /**
