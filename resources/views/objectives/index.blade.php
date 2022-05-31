@@ -60,7 +60,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-sm-9 col-lg-10 py-1">
+                    <div class="col-12 col-sm-9 col-lg-10 my-1">
                         <div class="row">
                             <div style="flex: 0 1;">
                                 <label>Nombre:</label>
@@ -70,9 +70,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-3 col-lg-2 py-1">
+                    <div class="col-12 col-sm-3 col-lg-2 my-1">
                         <div class="">
-                            <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#roleModal">+ Nuevo Rol</a>
+                            <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#roleModal">Nuevo Rol</a>
                         </div>
                     </div>
                 </div>
@@ -81,108 +81,121 @@
         <div class="card mb-4">
             <div class="card-header">Rol 01: Asegurar la calidad y confiabilidad de la red eléctrica de distribución de Coelvisac para el suministro de energía</div>
             <div class="card-body">
-                <div class="row mb-3">
-                    <div class="col-12 col-sm-9 col-lg-10">
+                <div class="row">
+                    <div class="col-12 col-sm-9 col-lg-10 my-1">
                         <div class="row">
                             <div style="flex: 0 1;">
                                 <label>Nombre:</label>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control d-inline w-1" data-np-checked="1">
+                                <input type="text" class="form-control d-inline w-1">
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-3 col-lg-2">
+                    <div class="col-12 col-sm-3 col-lg-2 my-1 mb-3">
                         <div class="">
-                            <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#roleModal">+ Nuevo Tema</a>
+                            <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#themeModal">Nuevo Tema</a>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Tema 1: Distribución de la Red Eléctrica</div>
-                    <div class="card-body overflow-auto p-0">
-                        <table class="table table-bordered m-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-center align-middle" width="90">COD</th>
-                                    <th class="text-center align-middle">Objetivo</th>
-                                    <th class="text-center align-middle">Actividades Principales</th>
-                                    <th class="text-center align-middle" width="120">Fecha Inicio</th>
-                                    <th class="text-center align-middle" width="120">Fecha Fin</th>
-                                    <th class="text-center align-middle">Procedimiento/<br>Politica</th>
-                                    <th class="text-center align-middle">Documento<br>Adjunto</th>
-                                    <th class="text-center align-middle">Estado</th>
-                                    <th class="text-center align-middle">Comentarios</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center align-middle" rowspan="3">Op_01-1</td>
-                                    <td class="align-middle" rowspan="3">Evitar Interrupciones Masivas</td>
-                                    <td class="align-middle">Elaborar e implementar plan</td>
-                                    <td class="text-center align-middle">05-Junio-22</td>
-                                    <td class="text-center align-middle">25-Junio-22</td>
-                                    <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
-                                        </svg>
-                                    </a></td>
-                                    <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
-                                        </svg>
-                                    </a></td>
-                                    <td class="t_red"></td>
-                                    <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
-                                        </svg>
-                                    </a></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">Implementar sistemas de protección suficientes</td>
-                                    <td class="text-center align-middle">05-Junio-22</td>
-                                    <td class="text-center align-middle">25-Junio-22</td>
-                                    <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
-                                        </svg>
-                                    </a></td>
-                                    <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
-                                        </svg>
-                                    </a></td>
-                                    <td class="t_red"></td>
-                                    <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
-                                        </svg>
-                                    </a></td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle">Clientes libres deben contar con sistemas de protección dentro de sus operaciones</td>
-                                    <td class="text-center align-middle">05-Junio-22</td>
-                                    <td class="text-center align-middle">25-Junio-22</td>
-                                    <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
-                                        </svg>
-                                    </a></td>
-                                    <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
-                                        </svg>
-                                    </a></td>
-                                    <td class="t_red"></td>
-                                    <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
-                                        <svg class="icon">
-                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
-                                        </svg>
-                                    </a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="card-body p-0">
+                        <div class="row p-2">
+                            <div class="col-12 col-sm-3 col-lg-2 offset-sm-9 offset-lg-10 my-1">
+                                <div class="">
+                                    <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#themeModal">Nueva Actividad</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="overflow-auto">
+                                    <table class="table table-bordered m-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center align-middle" width="90">COD</th>
+                                                <th class="text-center align-middle">Objetivo</th>
+                                                <th class="text-center align-middle">Actividades Principales</th>
+                                                <th class="text-center align-middle" width="120">Fecha Inicio</th>
+                                                <th class="text-center align-middle" width="120">Fecha Fin</th>
+                                                <th class="text-center align-middle">Procedimiento/<br>Politica</th>
+                                                <th class="text-center align-middle">Documento<br>Adjunto</th>
+                                                <th class="text-center align-middle">Estado</th>
+                                                <th class="text-center align-middle">Comentarios</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center align-middle" rowspan="3">Op_01-1</td>
+                                                <td class="align-middle" rowspan="3">Evitar Interrupciones Masivas</td>
+                                                <td class="align-middle">Elaborar e implementar plan</td>
+                                                <td class="text-center align-middle">05-Junio-22</td>
+                                                <td class="text-center align-middle">25-Junio-22</td>
+                                                <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
+                                                    </svg>
+                                                </a></td>
+                                                <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
+                                                    </svg>
+                                                </a></td>
+                                                <td class="t_red"></td>
+                                                <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
+                                                    </svg>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">Implementar sistemas de protección suficientes</td>
+                                                <td class="text-center align-middle">05-Junio-22</td>
+                                                <td class="text-center align-middle">25-Junio-22</td>
+                                                <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
+                                                    </svg>
+                                                </a></td>
+                                                <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
+                                                    </svg>
+                                                </a></td>
+                                                <td class="t_red"></td>
+                                                <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
+                                                    </svg>
+                                                </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">Clientes libres deben contar con sistemas de protección dentro de sus operaciones</td>
+                                                <td class="text-center align-middle">05-Junio-22</td>
+                                                <td class="text-center align-middle">25-Junio-22</td>
+                                                <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
+                                                    </svg>
+                                                </a></td>
+                                                <td class="text-center align-middle"><a href="#" class="btn btn-warning btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-data-transfer-up"></use>
+                                                    </svg>
+                                                </a></td>
+                                                <td class="t_red"></td>
+                                                <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
+                                                    <svg class="icon">
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
+                                                    </svg>
+                                                </a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
