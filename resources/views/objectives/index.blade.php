@@ -5,7 +5,7 @@
 @section('style')
     <style>
         thead tr th{
-            background-color: #3c4b64!important;
+            background-color: #51607c!important;
             color: white!important;
         }
         td.t_role_row{
@@ -38,13 +38,74 @@
             <div class="modal-body">
                 <form id="role_form" action="" method="POST">
                     <div class="row">
-                        <div class="col-sm-2">
-                            <label>#</label>
-                            <input class="form-control" type="number" value="01" readonly>
+                        <div class="col-12">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="role_sel">Rol:</label>
+                                <!--<input id="role_desc" class="form-control" type="text" name="desc" value="">-->
+                                <select class="form-select" name="role_sel" id="role_sel">
+                                    <option value="1">01: Asegurar la calidad y confiabilidad de la red electrica de distribucion de Coelvisac para el suministro de energía</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-sm-10">
-                            <label for="role_desc">Nombre</label>
-                            <input id="role_desc" class="form-control" type="text" name="desc" value="">
+                        <div class="col-12">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="theme_sel">Tema:</label>
+                                <select class="form-select" name="theme_sel" id="theme_sel">
+                                    <option value="1">1: Distribución de la Red Eléctrica</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="obj_sel">Objetivo:</label>
+                                <select class="form-select" name="obj_sel" id="obj_sel">
+                                    <option value="1">Op_01-1: Evitar Interrupciones Masivas</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="activity_desc">Actividad:</label>
+                                <input id="activity_desc" class="form-control" type="text" name="activity_desc" placeholder="Descripcion de la Actividad" value="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="act_date_start">Fecha Inicio:</label>
+                                <div class="input-group">
+                                    <input id="act_date_start" class="form-control" type="text" name="act_date_start" value="">
+                                    <span class="input-group-text">
+                                        <svg class="icon">
+                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calendar"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="act_date_end">Fecha Fin:</label>
+                                <div class="input-group">
+                                    <input id="act_date_end" class="form-control" type="text" name="act_date_end" value="">
+                                    <span class="input-group-text">
+                                        <svg class="icon">
+                                            <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calendar"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="policy_file">Procedimiento / Politica:</label>
+                                <input id="policy_file" class="form-control" type="file" name="policy_file">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group py-1">
+                                <label class="form-label" for="adjacent_file">Documento Adjunto:</label>
+                                <input id="adjacent_file" class="form-control" type="file" name="adjacent_file">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -59,7 +120,37 @@
     <div class="container-lg">
         <div class="card mb-4">
             <div class="card-body">
-                <div class="row">
+                <div class="d-flex flex-row flex-wrap">
+                    <div class="p-1">
+                        <a href="javascript:;" class="btn btn-success text-white" data-coreui-toggle="modal" data-coreui-target="#roleModal">
+                            <svg class="icon">
+                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-plus"></use>
+                            </svg> Nuevo Item
+                        </a>
+                    </div>
+                    <div class="p-1">
+                        <a href="javascript:;" class="btn btn-secondary text-white">
+                            <svg class="icon">
+                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-search"></use>
+                            </svg> Buscar
+                        </a>
+                    </div>
+                    <div class="p-1">
+                        <a href="javascript:;" class="btn btn-secondary text-white">
+                            <svg class="icon">
+                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-filter"></use>
+                            </svg> Filtrar
+                        </a>
+                    </div>
+                    <div class="p-1">
+                        <a href="javascript:;" class="btn btn-secondary text-white">
+                            <svg class="icon">
+                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-comment-bubble"></use>
+                            </svg> Ver Comentarios
+                        </a>
+                    </div>
+                </div>
+                <div class="row d-none">
                     <div class="col-12 col-sm-9 col-lg-10 my-1">
                         <div class="row">
                             <div style="flex: 0 1;">
@@ -81,33 +172,9 @@
         <div class="card mb-4">
             <div class="card-header">Rol 01: Asegurar la calidad y confiabilidad de la red eléctrica de distribución de Coelvisac para el suministro de energía</div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-sm-9 col-lg-10 my-1">
-                        <div class="row">
-                            <div style="flex: 0 1;">
-                                <label>Nombre:</label>
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control d-inline w-1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-3 col-lg-2 my-1 mb-3">
-                        <div class="">
-                            <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#themeModal">Nuevo Tema</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="card">
                     <div class="card-header">Tema 1: Distribución de la Red Eléctrica</div>
                     <div class="card-body p-0">
-                        <div class="row p-2">
-                            <div class="col-12 col-sm-3 col-lg-2 offset-sm-9 offset-lg-10 my-1">
-                                <div class="">
-                                    <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#themeModal">Nueva Actividad</a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="overflow-auto">
@@ -145,7 +212,7 @@
                                                 <td class="t_red"></td>
                                                 <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
                                                     <svg class="icon">
-                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-comment-bubble"></use>
                                                     </svg>
                                                 </a></td>
                                             </tr>
@@ -166,7 +233,7 @@
                                                 <td class="t_red"></td>
                                                 <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
                                                     <svg class="icon">
-                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-comment-bubble"></use>
                                                     </svg>
                                                 </a></td>
                                             </tr>
@@ -187,7 +254,7 @@
                                                 <td class="t_red"></td>
                                                 <td class="text-center align-middle t_comments"><a href="#" class="btn btn-success btn-sm">
                                                     <svg class="icon">
-                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-notes"></use>
+                                                        <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-comment-bubble"></use>
                                                     </svg>
                                                 </a></td>
                                             </tr>
