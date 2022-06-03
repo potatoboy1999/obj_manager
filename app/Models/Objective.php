@@ -22,9 +22,9 @@ class Objective extends Model
         return $this->belongsTo(Theme::class, "tema_id","id");
     }
     public function kpis(){
-        return $this->belongsToMany(Kpi::class,"T_SGCV_Obj_kpi","objectivo_id","kpi_id");
+        return $this->belongsToMany(Kpi::class,"T_SGCV_Obj_kpi","objetivo_id","kpi_id");
     }
     public function activities(){
-        return $this->hasMany(Activity::class,'objectivo_id','id');
+        return $this->hasMany(Activity::class,'objetivo_id','id');
     }
 }

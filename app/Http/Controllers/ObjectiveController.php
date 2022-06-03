@@ -19,9 +19,27 @@ class ObjectiveController extends Controller
     {
         $page = "objectives";
         $bcrums = ["Agenda Estrategica","Objetivos"];
+        // $activities = Role::join("T_SGCV_Temas",'T_SGCV_Roles.id','=','T_SGCV_Temas.rol_id')
+        //             ->join("T_SGCV_Objetivos","T_SGCV_Temas.id","=","T_SGCV_Objetivos.tema_id")
+        //             ->join("T_SGCV_Actividades","T_SGCV_Objetivos.id","=","T_SGCV_Actividades.objetivo_id")
+        //             ->where("T_SGCV_Roles.estado", 1)
+        //             ->where("T_SGCV_Temas.estado", 1)
+        //             ->where("T_SGCV_Objetivos.estado", 1)
+        //             ->where("T_SGCV_Actividades.estado", 1)
+        //             ->select("T_SGCV_Roles.i as role_id","T_SGCV_Roles.nombre as role_name",
+        //                      "T_SGCV_Temas.id as theme_id","T_SGCV_Temas.nombre as theme_name",
+        //                      "T_SGCV_Objetivos.id as obj_id","T_SGCV_Objetivos.nombre as obj_name",
+        //                      "T_SGCV_Actividades.id as act_id", "T_SGCV_Actividades.nombre as act_name",
+        //                      "T_SGCV_Actividades.fecha_comienzo as act_start", "T_SGCV_Actividades.fecha_fin as act_end",
+        //                      "T_SGCV_Actividades.doc_politicas_id as act_policies", "T_SGCV_Actividades.doc_adjunto_id as act_doc")
+        //             ->get();
+
+        $roles = Role::where("estado",1)->get();
+        
         return view("objectives.index",[
             "page"=>$page,
             "bcrums" => $bcrums,
+            "roles" => $roles,
         ]);
     }
 

@@ -202,23 +202,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="row d-none">
-                    <div class="col-12 col-sm-9 col-lg-10 my-1">
-                        <div class="row">
-                            <div style="flex: 0 1;">
-                                <label>Nombre:</label>
-                            </div>
-                            <div class="col">
-                                <input type="text" class="form-control d-inline w-1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-3 col-lg-2 my-1">
-                        <div class="">
-                            <a href="javascript:;" class="btn btn-success w-100 text-white" data-coreui-toggle="modal" data-coreui-target="#roleModal">Nuevo Rol</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="card mb-4">
@@ -325,6 +308,118 @@
                 </div>
             </div>
         </div>
+        <?php $i = 0; ?>
+        @foreach ($roles as $role)
+        <div class="card mb-4">
+            <div class="card-header">
+                Rol {{$i+1}}: {{$role->nombre}}
+            </div>
+            <div class="card-body">
+                <?php $x = 0; ?>
+                @foreach ($role->themes->where("estado", 1) as $theme)
+                <div class="card">
+                    <div class="card-header">Tema {{$x+1}}: {{$theme->nombre}}</div>
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="overflow-auto">
+                                    <table class="table table-bordered m-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center align-middle" width="90">COD</th>
+                                                <th class="text-center align-middle">Objetivo</th>
+                                                <th class="text-center align-middle">Actividades Principales</th>
+                                                <th class="text-center align-middle" width="120">Fecha Inicio</th>
+                                                <th class="text-center align-middle" width="120">Fecha Fin</th>
+                                                <th class="text-center align-middle">Procedimiento/<br>Politica</th>
+                                                <th class="text-center align-middle">Documento<br>Adjunto</th>
+                                                <th class="text-center align-middle">Estado</th>
+                                                <th class="text-center align-middle t-head-comments">Comentarios</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($theme->objectives->where("estado", 1) as $objective)
+                                                <?php 
+                                                    $y = 0; 
+                                                    $activities = $objective->activities->where("estado", 1);
+                                                ?>
+                                                @foreach ($activities as $activity)
+                                                @if ($y == 0)
+                                                <tr>
+                                                    <td class="text-center align-middle" rowspan="{{sizeOf($activities)}}">Op_01-1</td>
+                                                    <td class="align-middle" rowspan="{{sizeOf($activities)}}">{{$objective->nombre}}</td>
+                                                    <td class="align-middle">{{$activity->nombre}}</td>
+                                                    <td class="text-center align-middle">{{$activity->fecha_comienzo}}</td>
+                                                    <td class="text-center align-middle">{{$activity->fecha_fin}}</td>
+                                                    <td class="text-center align-middle">
+                                                        <a href="#" class="btn btn-warning btn-sm text-white">
+                                                            <svg class="icon">
+                                                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-arrow-thick-from-bottom"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <a href="#" class="btn btn-warning btn-sm text-white">
+                                                            <svg class="icon">
+                                                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-arrow-thick-from-bottom"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                    <td class="t_red"></td>
+                                                    <td class="text-center align-middle t-cel-comments">
+                                                        <a href="#" class="btn btn-success btn-sm text-white">
+                                                            <svg class="icon">
+                                                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-comment-bubble"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                @else
+                                                <tr>
+                                                    <td class="align-middle">{{$activity->nombre}}</td>
+                                                    <td class="text-center align-middle">{{$activity->fecha_comienzo}}</td>
+                                                    <td class="text-center align-middle">{{$activity->fecha_fin}}</td>
+                                                    <td class="text-center align-middle">
+                                                        <a href="#" class="btn btn-warning btn-sm text-white">
+                                                            <svg class="icon">
+                                                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-arrow-thick-from-bottom"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <a href="#" class="btn btn-warning btn-sm text-white">
+                                                            <svg class="icon">
+                                                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-arrow-thick-from-bottom"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                    <td class="t_red"></td>
+                                                    <td class="text-center align-middle t-cel-comments">
+                                                        <a href="#" class="btn btn-success btn-sm text-white">
+                                                            <svg class="icon">
+                                                                <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-comment-bubble"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                @endif
+                                                <?php $y++; ?>
+                                                @endforeach
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php $x++; ?>
+                @endforeach
+            </div>
+        </div>
+        <?php $i++; ?>
+        @endforeach
+
         <div class="card mb-4 d-none">
             <div class="card-header">Matriz de Objetivos</div>
             <div class="card-body overflow-auto">
