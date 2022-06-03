@@ -86,4 +86,11 @@ class ObjectiveController extends Controller
     {
         //
     }
+
+    public function storeItem(Request $request){
+        return back()->with([
+            'item_status' => true, 
+            'item_msg' => 'Nuevo item creado'
+        ]);
+    }
 }

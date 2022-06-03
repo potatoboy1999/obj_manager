@@ -1,3 +1,6 @@
+$(function() {
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+});
 $("#act_date_start").datepicker({
     minDate: new Date(),
     onSelect: function(date){
@@ -25,6 +28,7 @@ $("#item_save").on("click", function(ev){
         date_end: $("#act_date_end").val(),
     };
     console.log("Save New Item", data);
+    $("#role_form").submit();
 });
 
 $(".new_item_switch").on("change",function(ev){
@@ -66,3 +70,5 @@ $(".new_item_switch").on("change",function(ev){
         }
     }
 });
+
+var toast = new coreui.Toast($('#liveToast'));

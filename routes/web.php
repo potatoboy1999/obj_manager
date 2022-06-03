@@ -21,6 +21,11 @@ Route::get('/', function () {return redirect('/login');});
 Route::group(["middleware"=>["auth"]], function(){
     Route::get('dashboard',[DashboardController::class,"index"])->name('dashboard');
     Route::get('gestor_objetivos', [ObjectiveController::class,"index"])->name("objectives");
+
+    Route::group(["prefix"=>"gestor"], function(){
+        Route::get('objetivos', [ObjectiveController::class,"index"])->name("objectives");
+        Route::post('nuevo_item', [ObjectiveController::class,"storeItem"])->name("new_item");
+    });
 });
 
 require __DIR__.'/auth.php';

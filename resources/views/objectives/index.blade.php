@@ -27,6 +27,9 @@
         #ui-datepicker-div{
             z-index: 10000!important;
         }
+        .toast{
+            background-color: var(--cui-toast-background-color, rgba(255, 255, 255, 1))
+        }
     </style>
 @endsection
 
@@ -40,7 +43,8 @@
                 <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="role_form" action="" method="POST">
+                <form id="role_form" action="{{route('new_item')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group py-1">
@@ -155,6 +159,16 @@
     <!-- End Modal -->
 </div>
 <div class="body flex-grow-1 px-3">
+    <div class="position-fixed end-0 px-3" style="z-index: 11; margin-top: -20px">
+        <div id="liveToast" class="toast fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <svg class="docs-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#2eb85c"></rect></svg>
+                <strong class="me-auto">Nuevo Item</strong>
+                <button type="button" class="btn-close" data-coreui-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+        </div>
+    </div>
     <div class="container-lg">
         <div class="card mb-4">
             <div class="card-body">
@@ -417,14 +431,14 @@
 @endsection
 
 @section('script')
-
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/i18n/jquery-ui-i18n.min.js"></script>
 <script src="{{asset("js/intranet/objectives.js")}}"></script>
 <script>
-    //$("#role_save").on("click", function(ev){
-    //    ev.preventDefault();
-    //    console.log("Save New Role");
-    //});
+    @if (session()->get('item_status'))
+        $(".toast-body").html("{{session()->get('item_msg')}}");
+        toast.show();
+    @endif
 </script>
 
 @endsection
