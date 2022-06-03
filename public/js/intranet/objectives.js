@@ -72,5 +72,3 @@ $(".new_item_switch").on("change",function(ev){
         }
     }
 });
-
-var toast = new coreui.Toast($('#liveToast'));

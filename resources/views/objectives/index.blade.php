@@ -308,6 +308,7 @@
                 </div>
             </div>
         </div>
+        <!-- Start Activities Matrix -->
         <?php $i = 0; ?>
         @foreach ($roles as $role)
         <div class="card mb-4">
@@ -419,7 +420,7 @@
         </div>
         <?php $i++; ?>
         @endforeach
-
+        <!-- End Activities Matrix -->
         <div class="card mb-4 d-none">
             <div class="card-header">Matriz de Objetivos</div>
             <div class="card-body overflow-auto">
@@ -532,8 +533,20 @@
 <script>
     @if (session()->get('item_status'))
         $(".toast-body").html("{{session()->get('item_msg')}}");
+        var toast = new coreui.Toast($('#liveToast'));
         toast.show();
     @endif
+
+    $(function() {
+        $.ajax({
+            url: "{{route('api_all_activities')}}",
+            method: "GET",
+            success: function(res){
+                console.log(res);
+            }
+        });
+    });
+
 </script>
 
 @endsection
