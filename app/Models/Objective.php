@@ -15,10 +15,7 @@ class Objective extends Model
     protected $fillable = [
         'nombre',
         'tema_id',
-        'fecha_comienzo',
-        'fecha_fin',
         'estado',
-        'comentarios',
     ];
 
     public function theme(){

@@ -114,7 +114,7 @@
                             <div class="form-group py-1">
                                 <label class="form-label" for="act_date_start">Fecha Inicio:</label>
                                 <div class="input-group">
-                                    <input id="act_date_start" class="form-control" type="text" name="act_date_start" value="">
+                                    <input id="act_date_start" class="form-control" type="text" name="act_date_start" value="" required>
                                     <span class="input-group-text">
                                         <svg class="icon">
                                             <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calendar"></use>
@@ -127,7 +127,7 @@
                             <div class="form-group py-1">
                                 <label class="form-label" for="act_date_end">Fecha Fin:</label>
                                 <div class="input-group">
-                                    <input id="act_date_end" class="form-control" type="text" name="act_date_end" value="">
+                                    <input id="act_date_end" class="form-control" type="text" name="act_date_end" value="" required>
                                     <span class="input-group-text">
                                         <svg class="icon">
                                             <use xlink:href="{{asset("icons/sprites/free.svg")}}#cil-calendar"></use>
