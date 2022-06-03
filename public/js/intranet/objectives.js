@@ -2,12 +2,14 @@ $(function() {
     $.datepicker.setDefaults($.datepicker.regional['es']);
 });
 $("#act_date_start").datepicker({
+    dateFormat: "dd/mm/yy",
     minDate: new Date(),
     onSelect: function(date){
-        $("#act_date_end").datepicker('option', 'minDate', new Date(date));
+        $("#act_date_end").datepicker('option', 'minDate', date);
     }
 });
 $("#act_date_end").datepicker({
+    dateFormat: "dd/mm/yy",
     minDate: new Date(),
 });
 
