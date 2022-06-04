@@ -25,6 +25,7 @@ Route::group(["middleware"=>["auth"]], function(){
     Route::group(["prefix"=>"gestor"], function(){
         Route::get('objetivos', [ObjectiveController::class,"index"])->name("objectives");
         Route::post('nuevo_item', [ObjectiveController::class,"storeItem"])->name("new_item");
+        Route::get("all_items", [ObjectiveController::class,"all_items"])->name("api_all_activities");
     });
 });
 

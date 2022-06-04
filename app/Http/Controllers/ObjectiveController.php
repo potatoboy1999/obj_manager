@@ -154,9 +154,6 @@ class ObjectiveController extends Controller
     }
 
     public function all_items(Request $request){
-        $res = [
-            "roles"=>[]
-        ];
         $roles = Role::where("estado",1)->get();
         foreach ($roles as $i => $role) {
             foreach ($role->themes->where("estado",1) as $x => $theme) {

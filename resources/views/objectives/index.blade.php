@@ -9,6 +9,10 @@
             background-color: #51607c!important;
             color: white!important;
         }
+        .rol-header{
+            background-color: #4190af;
+            color: white;
+        }
         td.t_role_row{
             background-color: #8b9bb7!important;
         }
@@ -43,7 +47,7 @@
                 <button class="btn-close" type="button" data-coreui-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="role_form" action="{{route('new_item')}}" method="POST" enctype="multipart/form-data">
+                <form id="role_form" action="{{route('new_item')}}" method="POST" enctype="multipart/form-data" autocomplete="off">
                     @csrf
                     <div class="row">
                         <div class="col-12">
@@ -58,10 +62,9 @@
                                             <label class="form-check-label" for="newRoleSwitch">Nuevo</label>
                                         </div>
                                     </div>
-                                </div>    
-                                <!--<input id="role_desc" class="form-control" type="text" name="desc" value="">-->
+                                </div>
                                 <select class="form-select" name="role_sel" id="role_sel">
-                                    <option value="1">01: Asegurar la calidad y confiabilidad de la red electrica de distribucion de Coelvisac para el suministro de energía</option>
+                                    <!--<option value="1">01: Asegurar la calidad y confiabilidad de la red electrica de distribucion de Coelvisac para el suministro de energía</option>-->
                                 </select>
                                 <input class="form-control" type="text" name="role_name" id="role_name" placeholder="Descripcion del rol" style="display: none;">
                             </div>
@@ -136,13 +139,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12">
                             <div class="form-group py-1">
                                 <label class="form-label" for="policy_file">Procedimiento / Politica:</label>
                                 <input id="policy_file" class="form-control" type="file" name="policy_file">
                             </div>
                         </div>
-                        <div class="col-12 col-sm-6">
+                        <div class="col-12">
                             <div class="form-group py-1">
                                 <label class="form-label" for="adjacent_file">Documento Adjunto:</label>
                                 <input id="adjacent_file" class="form-control" type="file" name="adjacent_file">
@@ -204,7 +207,7 @@
                 </div>
             </div>
         </div>
-        <div class="card mb-4">
+        <div class="card mb-4 d-none">
             <div class="card-header">Rol 01: Asegurar la calidad y confiabilidad de la red eléctrica de distribución de Coelvisac para el suministro de energía</div>
             <div class="card-body">
                 <div class="card">
@@ -312,13 +315,16 @@
         <?php $i = 0; ?>
         @foreach ($roles as $role)
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header rol-header">
                 Rol {{$i+1}}: {{$role->nombre}}
             </div>
             <div class="card-body">
-                <?php $x = 0; ?>
-                @foreach ($role->themes->where("estado", 1) as $theme)
-                <div class="card">
+                <?php 
+                    $x = 0; 
+                    $themes = $role->themes->where("estado", 1);
+                ?>
+                @foreach ($themes as $theme)
+                <div class="card {{($x != sizeOf($themes)-1?"mb-3":"")}}">
                     <div class="card-header">Tema {{$x+1}}: {{$theme->nombre}}</div>
                     <div class="card-body p-0">
                         <div class="row">
@@ -350,8 +356,8 @@
                                                     <td class="text-center align-middle" rowspan="{{sizeOf($activities)}}">Op_01-1</td>
                                                     <td class="align-middle" rowspan="{{sizeOf($activities)}}">{{$objective->nombre}}</td>
                                                     <td class="align-middle">{{$activity->nombre}}</td>
-                                                    <td class="text-center align-middle">{{$activity->fecha_comienzo}}</td>
-                                                    <td class="text-center align-middle">{{$activity->fecha_fin}}</td>
+                                                    <td class="text-center align-middle">{{date("d-m-Y", strtotime($activity->fecha_comienzo))}}</td>
+                                                    <td class="text-center align-middle">{{date("d-m-Y", strtotime($activity->fecha_fin))}}</td>
                                                     <td class="text-center align-middle">
                                                         <a href="#" class="btn btn-warning btn-sm text-white">
                                                             <svg class="icon">
@@ -378,8 +384,8 @@
                                                 @else
                                                 <tr>
                                                     <td class="align-middle">{{$activity->nombre}}</td>
-                                                    <td class="text-center align-middle">{{$activity->fecha_comienzo}}</td>
-                                                    <td class="text-center align-middle">{{$activity->fecha_fin}}</td>
+                                                    <td class="text-center align-middle">{{date("d-m-Y", strtotime($activity->fecha_comienzo))}}</td>
+                                                    <td class="text-center align-middle">{{date("d-m-Y", strtotime($activity->fecha_fin))}}</td>
                                                     <td class="text-center align-middle">
                                                         <a href="#" class="btn btn-warning btn-sm text-white">
                                                             <svg class="icon">
@@ -542,7 +548,8 @@
             url: "{{route('api_all_activities')}}",
             method: "GET",
             success: function(res){
-                console.log(res);
+                global_items = res;
+                setupNewItemModal();
             }
         });
     });

@@ -72,3 +72,102 @@ $(".new_item_switch").on("change",function(ev){
         }
     }
 });
+
+$("#role_sel").on("change",function(){
+    console.log("role change:",$(this).val());
+    var role_id = $("#role_sel option:selected").val();
+    var role = global_items.find(role=> role.id == role_id);
+
+    var theme_options = "";
+    var obj_options = "";
+
+    var x = 0;
+    role.themes.forEach(theme => {
+        theme_options += "<option value='"+theme.id+"'>"+
+                         ((theme.id < 10)?"0"+theme.id:theme.id)+": "+
+                         theme.nombre+
+                         "</option>";
+        if(x == 0){
+            theme.objectives.forEach(objective => {
+                obj_options += "<option value='"+objective.id+"'>"+
+                                ((objective.id < 10)?"0"+objective.id:objective.id)+": "+
+                                objective.nombre+
+                                "</option>";
+            });
+        }
+    });
+
+    $("#theme_sel").html(theme_options);
+    $("#obj_sel").html(obj_options);
+
+});
+
+$("#theme_sel").on("change",function(){
+    console.log("theme change:",$(this).val());
+    var theme_id = $("#theme_sel option:selected").val();
+    var role = global_items.find(role=> role.themes.find(theme=>theme.id == theme_id));
+
+    var obj_options = "";
+
+    var x = 0;
+    role.themes.forEach(theme => {
+        if(theme.id == theme_id){
+            theme.objectives.forEach(objective => {
+                obj_options += "<option value='"+objective.id+"'>"+
+                                ((objective.id < 10)?"0"+objective.id:objective.id)+": "+
+                                objective.nombre+
+                                "</option>";
+            });
+        }
+    });
+    
+    $("#obj_sel").html(obj_options);
+});
+
+var global_items = [];
+
+function setupNewItemModal(){
+    if(global_items.length > 0){
+        var role_options = "";
+        var theme_options = "";
+        var obj_options = "";
+
+        var i = 0;
+        global_items.forEach(role => {
+            role_options += "<option value='"+role.id+"'>"+
+                            ((role.id < 10)?"0"+role.id:role.id)+": "+
+                            role.nombre+
+                            "</option>";
+            if(i == 0){
+                var x = 0;
+                role.themes.forEach(theme => {
+                    theme_options += "<option value='"+theme.id+"'>"+
+                                     ((theme.id < 10)?"0"+theme.id:theme.id)+": "+
+                                     theme.nombre+
+                                     "</option>";
+                    if(x == 0){
+                        theme.objectives.forEach(objective => {
+                            obj_options += "<option value='"+objective.id+"'>"+
+                                            ((objective.id < 10)?"0"+objective.id:objective.id)+": "+
+                                            objective.nombre+
+                                            "</option>";
+                        });
+                    }
+                });
+            }
+            i++;
+        });
+
+        $("#role_sel").html(role_options);
+        $("#theme_sel").html(theme_options);
+        $("#obj_sel").html(obj_options);
+    }else{
+        // switch all options to create NEW ITEM
+        $("#newRoleSwitch").prop("checked", true);
+        $("#newThemeSwitch").prop("checked", true);
+        $("#newObjSwitch").prop("checked", true);
+        $("#role_sel").hide();
+        $("#theme_sel").hide();
+        $("#obj_sel").hide();
+    }
+}
